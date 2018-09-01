@@ -25,7 +25,7 @@ https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/
   2. Using Lookup method injection
 
 ** Spring scopes:
-  - Singleton scoped bean: Single bean `per container`, and by creating multiple containers, multiple beans can be created of singleton scope.
+  - Singleton scoped bean: Single bean `per container`, and by creating multiple containers, multiple beans can be created of singleton scope. Singleton beans are pre-instantiated when container starts, this is to avoid runtime instatiation problems. Abstract beans are not pre-instantiated and trying to reference them will throw error.
   - Prototype scope: Spring container only creates prototype scoped beans and doesn't manage post creation so, calling destroy methods and other activities must be handled explicitly. the Spring container’s role in regard to a prototype-scoped bean is a replacement for the Java new operator.
   - Application, Session and Request scopes throw IllegalStateException when used with non-web application contexts, such as ClassPathXmlApplicationContext.
   - Accessing shorter scoped (e.g. Request scoped) beans in a longer scoped (e.g. singleton scoped) bean cannot be correctly achieved using autowring:
@@ -46,3 +46,23 @@ https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/
   - org.springframework.context.LifeCycle Interface defines contract that a bean implement if it has to perform its own start and stop activities in background when the application context starts and stops.
   - Use org.springframework.context.SmartLifecycle for fine grained control over autostartup as well its startup phases.
   
+* Aware Interfaces:
+  - Aware Interfaces provide ability to access various configuration beans for modifications. E.g. ApplicationContextAware which provides the implemnented bean with access to ApplicationContext.
+  
+* Inheritance:
+  - A child bean definition inherits scope, constructor argument values, property values, and method overrides from the parent, with the option to add new values. Any scope, initialization method, destroy method, and/or static factory method settings that you specify will override the corresponding parent settings.
+
+** Container Extension points:
+* BeanPostProcessor Interface: (org.springframework.beans.factory.config.BeanPostProcessor)
+  - BeanPostProcessor interface operates on a bean instance (i.e. Object) and not on class
+  - Helps customize a bean after it is instantiated by spring container
+  - All BeanPostProcessors and beans that they reference directly are instantiated on startup, as part of the special startup phase of the ApplicationContext.
+  - As AOP auto-proxying is itself implemnted as BeanPostProcessor, neither BeanPostProcessors nor the beans they reference directly are eligible for auto-proxying, and thus do not have aspects woven into them
+  - BeanPostProcessor defined in a container will process beans instantiated only in that container. They will not process even if containers are part of same hierarchy.
+  - To modify a bean's class definition itself, implement BeanFactoryPostProcessor
+  - Multiple BeanPostProcessor's can be implemented and their usage defined by specifying the `Order` in which they should be processed. Order can be specified by 1. Implemnting Ordered Interface 2. Use @Order annotation.
+  
+* BeanFactoryPostProcessor:
+- Helps change the bean configuration metadata itself before spring container instantiates the beans, other than BeanFactoryPostProcessor bean itself.
+- Multiple processors can be configured and ordered
+- Do not lazy init Bean(Factory)PostProcessor's, they might be ignored if no beans reference them at a later point.
