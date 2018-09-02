@@ -1,0 +1,4 @@
+Line representation:
+- Implements: dotted, white head
+- Extends: non-dotted, white head
+- Has a: non-dotted, black head

@@ -7,6 +7,12 @@ Design patterns are just guidelines
 Focus is on how an object Or a group of objects should be constructed
 
 * Factory
+- Seperate creation of a type or subtypes into a seperate class
+- Can return instances of a type or its subtype only
+- The subtypes returned by the Factory changes according to the user input
+- It provides control on the object creation
+- Decision to provide which subtype is based on if..else logic in factory matched with the user input
+
 - Define Interface
 - Let subclass decide which class to instantiate
 - Construction should not be permitted using `new` keyword
@@ -18,4 +24,22 @@ Focus is on how an object Or a group of objects should be constructed
 - Prototype
 
 ** Structural Design Patterns
+
 ** Behavioral Design Patterns
+
+* Stategy pattern
+- Behavior changes or can be changed dynamically
+- This dynamic behavior is implemented as a seperate type (i.e. Interface and implementations) that actual object can establish *has-a relation* with
+- Doesn't have any if..else condition to determine behavior but by the object type that relationship established with
+- This behavior can be changed by having setter method to which the behavioral Interface type can be set
+- This avoid long list of conditions, avoid duplicate code, avoid forcing unneeded methods on Interface types
+- Con: Increases number of objects
+https://www.youtube.com/watch?v=-NCgRD9-C6o&index=3&list=PLF206E906175C7E07
+
+* Observer pattern
+- If many objects wants to know when another object changes, e.g. stock market, when many subscribers to be notified when a stock price changes
+- Helps with loose coupling
+- Subject to be observed should have methods to registerObserver, unregisterObserver and notifyObserver
+- Subsribers will implement Observer which has 'update/notify' method which will be called by the subject Or an additional class that does the notification
+https://www.youtube.com/watch?v=wiQdrH2YpT4&index=4&list=PLF206E906175C7E07
+
