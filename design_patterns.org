@@ -12,14 +12,25 @@ Focus is on how an object Or a group of objects should be constructed
 - The subtypes returned by the Factory changes according to the user input
 - It provides control on the object creation
 - Decision to provide which subtype is based on if..else logic in factory matched with the user input
-
 - Define Interface
 - Let subclass decide which class to instantiate
 - Construction should not be permitted using `new` keyword
 
 * Abstract Factory
-- Singleton
-- Builder
+- Its factory of fatories i.e. a (Abstract) factory with if..else to determine the factory that should build the object. The factory here will then build object.
+- This can be used when components that make up an object increase for e.g., AnimalFactory that can provide both a dog and a cat but now we want more specific dog or a cat in which case, we will first have a dog factory and a second factory for cats
+https://www.youtube.com/watch?v=xbjAsdAK4xQ&list=PLF206E906175C7E07&index=6
+
+* Singleton
+- Limit instantiated object to *only one*
+- Approaches to achieve singleton is: 1. Enums 2.Inner class 3. Double lock/null check with volatile 4.Eager instation
+
+* Builder
+- Used when object must be created with many parameters where some are mandatory and others optional
+- Uses Inner static builder class to build the Outer class
+- Outer class should have private constructor and should be permitted to construct with `new`
+https://www.youtube.com/watch?v=D5NK5qMM14g&index=4&list=PLcow8_btriE11hzMbT3-B1sBg4YIc-9g_
+
 - Object pool
 - Prototype
 
