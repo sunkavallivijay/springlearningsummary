@@ -1,8 +1,17 @@
 https://sourcemaking.com/design_patterns
+https://github.com/kamranahmedse/design-patterns-for-humans
+
+Design patterns are just guidelines
 
 ** Creational Design Patterns, 6
-- Factory
-- Abstract Factory
+Focus is on how an object Or a group of objects should be constructed
+
+* Factory
+- Define Interface
+- Let subclass decide which class to instantiate
+- Construction should not be permitted using `new` keyword
+
+* Abstract Factory
 - Singleton
 - Builder
 - Object pool

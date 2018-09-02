@@ -1,4 +1,12 @@
-git config --global user.name "sunkavalli vijay"
-git config --global user.email sunkavalli.vijay@gmail.com
+- git config --global user.name "sunkavalli vijay"
+- git config --global user.email sunkavalli.vijay@gmail.com
+- git config --list
 
-git config --list
+** Git usage:
+- git status
+- git add -A
+- git commit -m "shortdescription
+
+Long description
+"
+- git push

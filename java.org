@@ -1,0 +1,6 @@
+Static Methods, when to ?
+1. Operates only on the arguments
+2. Doesn't need an instance to work (i.e. doesn't change state of an object) Or the instance to work is passed as argument
+3. Want to call the method without an instance
+Note: Static methods cannot be overriden but are hidden, can be overloaded
+
