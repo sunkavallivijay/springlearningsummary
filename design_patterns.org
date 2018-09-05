@@ -1,9 +1,10 @@
 https://sourcemaking.com/design_patterns
-https://github.com/kamranahmedse/design-patterns-for-humans
+https://stackoverflow.com/questions/1673841/examples-of-gof-design-patterns-in-javas-core-libraries
+
 
 Design patterns are just guidelines
 
-** Creational Design Patterns, 6
+** Creational Design Patterns, 6:
 Focus is on how an object Or a group of objects should be constructed
 
 * Factory
@@ -17,7 +18,7 @@ Focus is on how an object Or a group of objects should be constructed
 - Construction should not be permitted using `new` keyword
 
 * Abstract Factory
-- Its factory of fatories i.e. a (Abstract) factory with if..else to determine the factory that should build the object. The factory here will then build object.
+- Its factory of factories i.e. a (Abstract) factory with if..else to determine the factory that should build the object. The factory here will then build object.
 - This can be used when components that make up an object increase for e.g., AnimalFactory that can provide both a dog and a cat but now we want more specific dog or a cat in which case, we will first have a dog factory and a second factory for cats
 https://www.youtube.com/watch?v=xbjAsdAK4xQ&list=PLF206E906175C7E07&index=6
 
@@ -31,12 +32,38 @@ https://www.youtube.com/watch?v=xbjAsdAK4xQ&list=PLF206E906175C7E07&index=6
 - Outer class should have private constructor and should be permitted to construct with `new`
 https://www.youtube.com/watch?v=D5NK5qMM14g&index=4&list=PLcow8_btriE11hzMbT3-B1sBg4YIc-9g_
 
-- Object pool
-- Prototype
+* Object pool
+- Objects are created once and stored in a pool to be supplied when requested
+- This will avoid the neeed for object creation for servicing each client requests
+- It will incurr the one-time cost of creating the required x objects initially
+- When no more objects left in the pool, a new object may either be created Or client request is made to wait for object availability
+E.g. String pool in Java
 
-** Structural Design Patterns
+* Prototype
+- Useful when creation of an object involves huge logic/computation making object creation a costly afair and, calculated logic doesn't change for each new object creation
+- Initial object is created by incurring the one-time cost and rest of the required objects are created by cloning this objects and its state and modifying only what is required on the cloned object.
+https://www.youtube.com/watch?v=AFbZhRL0Uz8&index=9&list=PLF206E906175C7E07
 
-** Behavioral Design Patterns
+
+
+** Structural Design Patterns:
+
+* Adapter pattern
+- Allows 2 incompatible types (Interfaces) to work together
+- Adapter class inhertis from one type (Interface) while the other Type's object to be adapted is injected as a HAS-A.
+https://www.youtube.com/watch?v=qG286LQM6BU&list=PLF206E906175C7E07&index=13
+
+* Decorator pattern
+- Lets add additional responsibilities dynamically
+- Decorator class is implemented to be of same type as the actual class. And, it also have a HAS-A relationship with actual class object is injected/supplied.
+- Constructor chaining is used to achieve this pattern when an object is constructed
+e.g. of a decorator pattern: new BufferedInputStream(new FileInputStream("file path"));
+https://www.youtube.com/watch?v=j40kRwSm4VE&list=PLF206E906175C7E07&index=11
+
+* Composite pattern
+
+
+** Behavioral Design Patterns:
 
 * Stategy pattern
 - Behavior changes or can be changed dynamically
@@ -54,3 +81,7 @@ https://www.youtube.com/watch?v=-NCgRD9-C6o&index=3&list=PLF206E906175C7E07
 - Subsribers will implement Observer which has 'update/notify' method which will be called by the subject Or an additional class that does the notification
 https://www.youtube.com/watch?v=wiQdrH2YpT4&index=4&list=PLF206E906175C7E07
 
+* Chain of Responsibility
+- Passing a single request or object through multiple processing elements e.g. Servlet Filter Implementation
+- Client Request or object passes through same type of classes with same method call on each object
+https://sourcemaking.com/design_patterns/chain_of_responsibility

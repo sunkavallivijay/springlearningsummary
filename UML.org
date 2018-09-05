@@ -1,4 +1,40 @@
+https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-aggregation-vs-composition/
+
 Line representation:
 - Implements: dotted, white head
 - Extends: non-dotted, white head
 - Has a: non-dotted, black head
+
+
+** Has-A:
+- Associate, Aggregation and Composition
+
+* Association:
+- Association between two different types E.g owner and a dog Or a car and an engine
+- In the above example a owner can have 1 or more dogs and a dog has an owner
+- They *may* exist indepedently
+- Straight line with 1..x notatio is used to represent Association
+
+* Aggregation:
+- An *association* where the relationship is not strong Or each type can exist without the other
+- Represented as a Straight line with empty diamond on left side
+
+* Composition:
+- An *association* where an entity might not exist without the other 
+- E.g. A car doesn't exist without an engine, A room doesn't exist without a house
+- Represents strong relationship between the types associated
+- Represented as a Straight line with filled diamond on left side
+
+** Is-A:
+- Generalization, Specialization and Inheritance
+
+* Generalization:
+- Representing a type to its basic form e.g. Animal Or a vehicle
+- Represented dotted line poiting upwards
+
+* Specialization:
+- Representing a type to a specific form e.g. Dog which is a specific animal
+- Represented with dottled line poiting downwards
+
+
+
