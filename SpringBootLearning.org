@@ -142,3 +142,50 @@ https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-featu
    spring.jta.enabled=false to disable transaction management
 
 Session management with spring: https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-session
+
+** Spring Framework Core:
+org.springframework.beans/org.springframework.context
+org.springframework.context.ApplicationContext Or WebApplicationContext Or ClassPathXmlApplicationContext Or FileSystemXmlApplicationContext
+
+- A spring bean can be defined in 3 ways:
+  1. Using XML  2. Using @Component Or @Configuration 3. @Configuration + @Bean
+
+- A bean can be retrieved using ApplicationContext, like:
+  ApplicationContext context = new ClassPathXmlApplicationContext("services.xml", "daos.xml");
+  PetStoreService service = context.getBean("petStore", PetStoreService.class);
+
+  If using spring boot use @Autowrited:
+  @Autowrited private ApplicationContext applicationContext;
+  PetStoreService service = applicationContext.getBean(PetStoreService.class);
+
+- Within the spring container each bean is represnted as of type BeanDefinition
+https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-definition
+
+- Explicitly register external object as spring bean by using DefaultListableBeanFactory, provided by applicationContext.getBeanFactory();
+- Circular dependency: BeanCurrentlyInCreationException
+  https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-dependency-resolution
+- To inject prototype bean into singleton bean use:
+  1. Implement ApplicationContextAware interface that provides ApplicationContext and then call applicationContext.getBean("B.class");
+  2. Using Lookup method injection
+
+** Spring scopes:
+  - Singleton scoped bean: Single bean `per container`, and by creating multiple containers, multiple beans can be created of singleton scope.
+  - Prototype scope: Spring container only creates prototype scoped beans and doesn't manage post creation so, calling destroy methods and other activities must be handled explicitly. the Spring container’s role in regard to a prototype-scoped bean is a replacement for the Java new operator.
+  - Application, Session and Request scopes throw IllegalStateException when used with non-web application contexts, such as ClassPathXmlApplicationContext.
+  - Accessing shorter scoped (e.g. Request scoped) beans in a longer scoped (e.g. singleton scoped) bean cannot be correctly achieved using autowring:
+  1. Use AOP Scoped proxy 2. Autowire bean as ObjectFactory<MyTargetBean> and call getObject() 3. Use ObjectProvider<MyTargetBean> 4. Provider<MyTargetBean>
+  - Method calls inside same call are direct, to route them through proxy, implement @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS) on class. This is good case where class level cache is implemented where cached data of method2 result can be accessed by method1 instead of direct method call.
+  - Spring's AOP based proxy creates CGLIB proxies, which only intercept public method calls. Alternative is to create JDK interface based proxies by setting proxy-target-class=false, but in this case collaboration must be through an interface.
+  https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-scopes-other-injection
+
+** Bean lifecycle callbacks:
+* Init & destroy:
+  1. XML: init-method & destroy-method 2. Implement InitializingBean & DisposableBean 2. @PostConstruct & @PreDestroy 3.default-init-method & default-destroy-method
+  - All the init & destroy approaches can be used at sametime, they are called in a specific order, refer:
+  https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-factory-lifecycle-combined-effects
+  - For Classes that implemented AutoClosable Or Closeable, assign special value `inferred` to the bean definition.
+  - Initialization callback is performed immediately after all dependencies/collaborators are supplied when, the bean is still a rawbean without being fully created. AOP proxies only applied on fully created beans so it cannot be applied on Initialization or destroy methods.
+
+* Startup and shutdown callbacks:
+  - org.springframework.context.LifeCycle Interface defines contract that a bean implement if it has to perform its own start and stop activities in background when the application context starts and stops.
+  - Use org.springframework.context.SmartLifecycle for fine grained control over autostartup as well its startup phases.
