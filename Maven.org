@@ -1,0 +1,2 @@
+Difference between DependencyManagement and Dependencies:
+https://stackoverflow.com/questions/2619598/differences-between-dependencymanagement-and-dependencies-in-maven
