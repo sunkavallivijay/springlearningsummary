@@ -11,3 +11,5 @@ Animal dog = new Dog(); dog.digHole(); doesn't work as, assignement type which i
 - How can a private method be accessed by other classes when anything can be done with only restriction isto private keyword cannot be changed ?
 1. Add a non-private method to the class that internally calls private method
 
+- Difference between program arguments and VM arguments:
+http://www.avajava.com/tutorials/lessons/whats-the-difference-between-program-arguments-and-vm-arguments.html
