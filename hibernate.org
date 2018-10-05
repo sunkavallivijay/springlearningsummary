@@ -14,6 +14,7 @@ public class Employer{
   private Integer employerId;
   private String employerName;
   
+  //@JsonManagedReference
   @OneToMany(cascade = CascadeType.ALL, mappedBy="employer") //Note use of variable/field from the other class on which ManyToOne defined
   private Set<Employee> employees;
   
@@ -32,6 +33,7 @@ public class Employee{
   private Integer employeeId;
   private String employeeName;
   
+ // @JsonBackReference
   @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name="employerId", nullable=true) //Note use of Employer class ID field/variable here for joining column
   private Employer employer;
@@ -41,3 +43,5 @@ public class Employee{
 #+END_SRC
 
 Note: JsonIdentityInfo is being used above to prevent Infinite loop on running get on these entities. On calling `Employer` entity Employees will get called, and within Employee entity, Employer is again called leading to Infinite loop. JsonIdentityInfo prevents this recursive infinite loop.
+
+//Also refer to	@JsonManagedReference @JsonBackReference which can also play role in indicating the relationship
