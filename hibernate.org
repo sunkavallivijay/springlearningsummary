@@ -1,0 +1,43 @@
+** Bi-directional relationship between entities:
+
+For e.g. Employer entity and Employee entities
+- One Employer can have many employees and one employee can be with only one employer; Employer 1..x Employee    Employee *..1 Employeer
+
+#+BEGIN_SRC
+//Partent entity --
+//Note: OneToMany being used here: read it as: Each (One) employer mapping to Many employees
+@Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerators.class, property="employerId")
+public class Employer{
+  @Id
+  @GeneratedValue(strategy = GenerationType.Auto)
+  private Integer employerId;
+  private String employerName;
+  
+  @OneToMany(cascade = CascadeType.ALL, mappedBy="employer") //Note use of variable/field from the other class on which ManyToOne defined
+  private Set<Employee> employees;
+  
+  //..Getters setters here
+}
+#+END_SRC
+
+#+BEGIN_SRC
+// Child entity --
+//Note: ManyToOne being used here: read it as: Many employees to each (One) employer mapping
+@Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerators.class, property="employeeId")
+public class Employee{
+  @Id
+  @GeneratedValue(strategy = GenerationType.Auto)
+  private Integer employeeId;
+  private String employeeName;
+  
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name="employerId", nullable=true) //Note use of Employer class ID field/variable here for joining column
+  private Employer employer;
+  
+  //..Getters setters here
+}
+#+END_SRC
+
+Note: JsonIdentityInfo is being used above to prevent Infinite loop on running get on these entities. On calling `Employer` entity Employees will get called, and within Employee entity, Employer is again called leading to Infinite loop. JsonIdentityInfo prevents this recursive infinite loop.
