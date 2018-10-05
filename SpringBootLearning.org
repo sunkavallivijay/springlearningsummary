@@ -123,7 +123,14 @@ https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-featu
     @EnableJpaRepositories(basePackages={"packages containing repositories"}, entityManagerFactoryRef="entity manager name", transactionManagerRef="transaction manager name")
     JpaTransactionManager a sub-type of PlatformTransactionManager helps in transaction management
     For transaction management, use @EnableTransactionManagement
-
+    
+   - DB Auto creation in embedded H2 database:
+     spring.h2.console.eabled=true //Enables browser based webpage for Database, access it with https://localhost:8080/h2 (try with h2-console)
+     spring.jpa.generate-ddl=true
+     spring.jpa.hibernate.ddl-auto=create-drop
+     spring.datasource.platform=h2
+     spring.datasource.url=jdbc:h2:mem:testdb
+   
 ** Caching:
   Enable caching using @EnableCaching
   Use `spring.cache.type=` to specify which cache provider to use
