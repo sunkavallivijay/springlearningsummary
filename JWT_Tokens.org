@@ -1,0 +1,46 @@
+- JWT: JSON Web Tokens
+- Purpose: Authentication, Authorization and secure transmission of messages between parties
+- Authentication: By signing the message using public/private keys and entities having the public key implies they are valid authenticated party for usage
+- Authorization: Basing on the (additional) claims present in the payload.
+- Secure tranmission: By means of encryption
+- Singed tokens help ensure the Integrity of the message
+
+* Token Structure:
+  - Header
+  - Payload
+  - Signature
+  
+  Token looks like: xxxxx.yyyyy.zzzzz
+  
+  - Header looks like:
+  #+BEGIN_SRC
+  {
+    "alg": "HS256",
+    "typ": "JWT"
+  }
+  #+END_SRC
+  
+  - Payload looks like:
+  #+BEGIN_SRC
+  {
+    "sub": "1234567890",
+    "name": "John Doe",
+    "admin": true
+  }
+  #+END_SRC
+  
+  - Signature is generated using a secret key (can be anything) that must be shared between the communicating parties
+  #+BEGIN_SRC
+    HMACSHA256(
+    base64UrlEncode(header) + "." +
+    base64UrlEncode(payload),
+    secret)
+  #+END_SRC
+  
+  _Refer:_
+  https://jwt.io/introduction/ (Got the understanding of JWT from this site)
+  https://stackoverflow.com/questions/40375508/whats-the-difference-between-jwts-and-bearer-token (Refer to 2nd answer)
+  https://jwt.io/ (Token validation)
+  http://jwtbuilder.jamiekurtz.com/ (For token generation)
+  https://auth0.com/blog/json-web-token-signing-algorithms-overview/
+  https://codeburst.io/jwt-to-authenticate-servers-apis-c6e179aa8c4e (Example)
