@@ -109,6 +109,8 @@ https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-featu
             .antMatchers("/**").permitAll(); //permit others
     }
 
+- JWT Tokens usage: https://www.baeldung.com/spring-security-oauth-jwt
+
 ** Database:
     HikariCP is used by spring boot (by default) for connection pooling
     spring-boot-starter-jdbc Or spring-boot-starter-data-jpa
