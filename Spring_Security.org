@@ -1,4 +1,4 @@
-- JWT: JSON Web Tokens
+* JWT: JSON Web Tokens
 - Purpose: Authentication, Authorization and secure transmission of messages between parties
 - Authentication: By signing the message using public/private keys and entities having the public key implies they are valid authenticated party for usage
 - Authorization: Basing on the (additional) claims present in the payload.
@@ -44,3 +44,11 @@
   http://jwtbuilder.jamiekurtz.com/ (For token generation)
   https://auth0.com/blog/json-web-token-signing-algorithms-overview/
   https://codeburst.io/jwt-to-authenticate-servers-apis-c6e179aa8c4e (Example)
+
+
+* OAuth2:
+  - access_token has limited life
+  - refresh_token along with client ID and client secret should be used to get new access_token
+  - If access_token is compromoised its limited life time would help to limit impact
+  - If refresh_token is compromised, without client id and secret it is no use
+  
