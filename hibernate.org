@@ -1,3 +1,6 @@
+
+- Reference: Free good ebook https://en.wikibooks.org/wiki/Java_Persistence
+
 ** Bi-directional relationship between entities:
 
 For e.g. Employer entity and Employee entities
