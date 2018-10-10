@@ -52,3 +52,5 @@
   - If access_token is compromoised its limited life time would help to limit impact
   - If refresh_token is compromised, without client id and secret it is no use
   
+* Spring Web MVC tutorial:
+https://www.boraji.com/spring-security-5-custom-userdetailsservice-example
