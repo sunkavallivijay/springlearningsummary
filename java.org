@@ -1,9 +1,9 @@
 - Static Methods, when to ?
-1.  If you want to have only one piece of storage for a particular piece of data, regardless of how many objects are created, or even if no objects are created
-2. Operates only on the arguments
-3.. Doesn't need an instance to work (i.e. doesn't change state of an object) Or the instance to work is passed as argument
-4. Want to call the method without an instance
-Note: Static methods cannot be overriden but are hidden, can be overloaded
+  1.  If you want to have only one piece of storage for a particular piece of data, regardless of how many objects are created, or even if no objects are created
+  2. Operates only on the arguments
+  3. Doesn't need an instance to work (i.e. doesn't change state of an object) Or the instance to work is passed as argument
+  4. Want to call the method without an instance
+  Note: Static methods cannot be overriden but are hidden, can be overloaded
 
 - A field that is both static and final has only one piece of storage that cannot be changed. 
 
