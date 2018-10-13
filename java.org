@@ -17,6 +17,9 @@ Animal dog = new Dog(); dog.digHole(); doesn't work as, assignement type which i
 - Difference between program arguments and VM arguments:
 http://www.avajava.com/tutorials/lessons/whats-the-difference-between-program-arguments-and-vm-arguments.html
 
+** Asynchronous programming with CompletableFuture:
+  + Refer: https://www.callicoder.com/java-8-completablefuture-tutorial/
+
 
 ** Java Documentation:
   + You can use HTML tags in Java doc comments and will be processed
