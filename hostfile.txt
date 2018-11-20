@@ -1,3 +1,3 @@
-0.0.0.0 mobileads.indiatimes.com
-0.0.0.0 akamaihd.net
-0.0.0.0 assertive.google.in
+mobileads.indiatimes.com
+akamaihd.net
+adservice.google.in
