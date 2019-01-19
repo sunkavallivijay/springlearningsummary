@@ -4,6 +4,12 @@
 - Autonomous: Change to one service doesn't affect consuming services
 - Communication: Service communicating with lightweight mechanisms, often HTTP Resource api
 
+### Characteristics of a Microservice:
+- Louse coupling: Change to a service should _never_ lead to change in other service(s)
+- Highly Cohesive: Related behavior should be together and any changes to a behavior should fall within a service. If a change results in changes beyond _a_ service then the services are not cohesively defined.
+- Bounded context: A Domain-Driven design concept where, the organization as well as the the teams are divided into a manageable bounded models **with each having specific responsibilites**.   
+E.g. Product management team, Sales team, Order management team, Delivery management team, Warehouse management team, Finance team, Shared services team, HR Team etc and within the Product management team we can have Product Listing Services, Product Search and retrieval services, Sales analysis and reporting services, Order receiving service, Order status and reporting services etc....
+
 ### Benefits of Microservices:
 - Respond to business changes faster with easy & faster development of focused services
 - Technology heterogeneity
@@ -49,3 +55,5 @@
 
 Microservices Spring boot example: 
 https://www.youtube.com/watch?v=rlS9eH5tEnY&pbjreload=10
+https://blog.sapiensworks.com/post/2012/04/17/DDD-The-Bounded-Context-Explained.aspx (This is very good)
+https://www.martinfowler.com/bliki/BoundedContext.html
