@@ -54,6 +54,11 @@ E.g. Product management team, Sales team, Order management team, Delivery manage
 
 
 Microservices Spring boot example: 
-https://www.youtube.com/watch?v=rlS9eH5tEnY&pbjreload=10
-https://blog.sapiensworks.com/post/2012/04/17/DDD-The-Bounded-Context-Explained.aspx (This is very good)
-https://www.martinfowler.com/bliki/BoundedContext.html
+https://www.youtube.com/watch?v=rlS9eH5tEnY&pbjreload=10  
+https://blog.sapiensworks.com/post/2012/04/17/DDD-The-Bounded-Context-Explained.aspx (This is very good)  
+https://www.martinfowler.com/bliki/BoundedContext.html  
+
+### Testing:
+#### Stubbing Vs Mocking:
+- Stubbing is creating dumb objects that just respond with a value on request. E.g. Creating an stub object that gives 15,000 points when asked for customer 123
+- Mocking is ensuring the call to object actually happened; this is like an additional check to stubbing. E.g. When a new customer (stub) object is created a loyality points object for this customer must get created, to validate this Mockig helps.
