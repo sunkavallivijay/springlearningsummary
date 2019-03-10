@@ -88,7 +88,7 @@ __Macros:__
 __Abbreviations:__
 - Can be used to Replace abbreviations with its detailed text Or can be used for common spelling mistakes
 - E.g.-1: _iabbrev ccopy Copyright 2013 Steve Losh, all rights reserved_. Here, ccopy is auto replaced with the text next to it.
-- E.g.-2: _iabbrev waht what`_
+- E.g.-2: _iabbrev waht what_
 - Note, vim auto changes abbreviations there is no need to press any key
 
 __Split size management:__
@@ -96,6 +96,6 @@ __Split size management:__
 
 __Autocommands:__
 - Autocommands are commands thats run when a particular events happens; these are like listeners
-- autocmd BufNewFile * :write
+- E.g _autocmd BufNewFile * :write_ ; this will actually create a file on disk, in general vim doesn't create file until explicitly saved
 
 
