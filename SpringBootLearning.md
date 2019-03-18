@@ -1,3 +1,39 @@
+__Spring boot goals:__
+1.  Enable faster and better startup experience with spring
+2.  Take Opinionated view but move out of the way quickly if needed
+3.  Provide Non-functional support like embedded servers, dev tools, actuators etc
+4.  No code generation Or XML configs
+
+- Group ID used: org.springframework.boot
+- Nomenclature for starters: `spring-boo-starter-*`
+- Parent artifact with defaults: spring-boot-starter-parent
+- For version migration check: `spring-boot-properties-migration artifact/pom`
+- For executable fat jar creation use plugin: spring-boot-maven-plugin
+- View contents of fat jar with: `jar tvf target/jarname.jar`
+- Run spring boot fat jar: `java -jar target/jarname.jar`
+
+
+__Spring-boot-start-parent:__
+- Provides maven defaults
+- Provides _dependency-management_; this ensures dependencies are not added to project without asking it in _dependency_
+- Remember we must specify version number of this parent and only for this version number has to be explicitly specified for the rest check dependencies pom
+
+__Spring-boot-parent provides:__
+1.  Java compiler version
+2.  UTF-8 encoding
+3.  Resource filtering including `application.xml` Or `application.yml` with specific env. specific configs like `application-dev.yml` as well
+4.  spring-boot-dependencies through inheritance
+5.  Sesible plugin configs
+6.  Repackage execution goal
+
+__Spring-boot-dependencies__
+- Dependecies list is available as: `spring-boot-dependencies` bom
+- Inherited by spring-boot-starter-parent
+- Developers can omit <version> specification of a dependency when this bom or parent is used
+
+__List of najor starts and their underlying used dependency:__
+[Starter list](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-build-systems.html#using-boot-starter)
+
 @Controller - sterotype annotation
     @RestController - @Controller + @ResponseBody
     @RequestMapping
@@ -9,11 +45,9 @@
 @EnableAutoConfiguration : 
     Opinonated view of the spring application basing on classpath jars
     Developer must opt-in for spring to take opinionated view of application by using this annotation
-spring-boot-starter-parent
 spring-boot-starter-web
-spring-boot-maven-plugin - to build fat jar
 
-nomenclature for starters: spring-boo-starter-*
+
 
 spring-boot-dependencies: provides dependency management eliminating the need to provide version numbers
 <properties></properties> - overrides parent (inherited) properties
@@ -198,3 +232,7 @@ https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/
 * Startup and shutdown callbacks:
   - org.springframework.context.LifeCycle Interface defines contract that a bean implement if it has to perform its own start and stop activities in background when the application context starts and stops.
   - Use org.springframework.context.SmartLifecycle for fine grained control over autostartup as well its startup phases.
+
+[Example guides](https://spring.io/guides/)
+[Spring boot sample code](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples)
+
