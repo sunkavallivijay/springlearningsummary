@@ -27,6 +27,7 @@ __Spring-boot-parent provides:__
 6.  Repackage execution goal
 
 __Spring-boot-dependencies__
+- provides dependency management eliminating the need to provide version numbers
 - Dependecies list is available as: `spring-boot-dependencies` bom
 - Inherited by spring-boot-starter-parent
 - Developers can omit <version> specification of a dependency when this bom or parent is used
@@ -34,35 +35,38 @@ __Spring-boot-dependencies__
 __List of najor starts and their underlying used dependency:__
 [Starter list](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-build-systems.html#using-boot-starter)
 
+- You need to opt-in to auto-configuration by adding the @EnableAutoConfiguration or @SpringBootApplication
+
+__Spring/Application components:__
+- These annotations are automatically pickedup when @ComponentScan Or @SpringBootApplication is used at the top most packaged class
+- @Configuration, @Component, @Controller, @Service, @Repository
+
+@SpringBootApplication:
+  == @Configuration + @EnableAutoConfiguration + @ComponentScan
+  main method: Bootstrap spring application and run on server if tomcat present
+  SpringApplication.run(Class, args) <-- Asking _spring application_ to run
+  SpringApplicationBuilder - fluent Api Or If you need to build an ApplicationContext hierarchy (multiple contexts with a parent/child relationship)
+
+@EnableAutoConfiguration : 
+- Opinonated view of the spring application basing on classpath jars
+- Developer must opt-in for spring to take opinionated view of application by using this annotation
+- Import configurations and any user defined beans from a different package Or even a jar with: `@Import({ packagename.MyConfig.class, packagename.MyAnotherConfig.class })`
+
 @Controller - sterotype annotation
     @RestController - @Controller + @ResponseBody
     @RequestMapping
 
-@SpringBootApplication
-    main: Bootstrap spring application and runs on server if tomcat present
-        SpringApplication.run(Class, args)
-        SpringApplicationBuilder - fluent Api Or If you need to build an ApplicationContext hierarchy (multiple contexts with a parent/child relationship)
-@EnableAutoConfiguration : 
-    Opinonated view of the spring application basing on classpath jars
-    Developer must opt-in for spring to take opinionated view of application by using this annotation
-spring-boot-starter-web
-
-
-
-spring-boot-dependencies: provides dependency management eliminating the need to provide version numbers
-<properties></properties> - overrides parent (inherited) properties
-
-Spring components: @Component, @Controller, @Service, @Repository
 Usage of @ComponentScan Or @SpringBootApplication - will enable spring to scan application for annotated components
 
-To run spring boot application:
-1. Run java jar - java -jar target/appname.jar
-2. Maven - mvn spring-boot:run
-3. Debug mode: java -jar myproject-0.0.1-SNAPSHOT.jar --debug
+__Ways to run spring boot application:__
+1. Run as: `java jar - java -jar target/appname.jar`
+2. With maven:`mvn spring-boot:run` at project root
+3. Run in Debug mode: `java -jar myproject-0.0.1-SNAPSHOT.jar --debug``
 
 Hot swapping:
-    spring-boot-devtools
-    Application restart vs reload: Spring devtools 'restarts' app by using two classloaders. Libraries are loading tru base classloader, while changing code is loaded using `restart` classloader. When code changes, it dumps restart classloaders and creates a new restart classloader. Base classloader doesn't change making restarts faster.
+- spring-boot-devtools
+- Application restart vs reload: 
+  Spring devtools 'restarts' app by using two classloaders. Libraries are loading tru base classloader, while changing code is loaded using `restart` classloader. When code changes, it dumps restart classloaders and creates a new restart classloader. Base classloader doesn't change making restarts faster.
 
 When spring boot app fails to start `FailureAnalyzer interface` implementations will provide diagnostic information to the extent possible.
 
