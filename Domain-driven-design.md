@@ -1,0 +1,15 @@
+- Start with understand Domains
+- Create scooters with Bounded context 
+- Create a map of contexts; Context maps 
+- Strive to use same terminology 
+- start with top level domains and do drill down 
+
+- Models or Entity should be rich containing behavior 
+- entities with no behavior are anemic 
+- entities must have an identity 
+- Value objects 
+- value objects should be immutable 
+- Value objects should not have any side affects 
+- string and date for example are value objects 
+- Any change of value object gives a new object 
+- Value object doesn't have identity 
