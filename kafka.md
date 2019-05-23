@@ -1,13 +1,13 @@
 Kafka: 
-A high throughput distributed messaging system 
-Simply speaking, move data at high volumes
+A high throughput distributed messaging system
+Simply speaking, moves data at high volumes
 
 Why not ETL? 
-Proprietary aporiaches
-Need more learning
-Resource intensive  
-Tight coupling
-Depends on source (extracting)and load system resource constraints
+- Proprietary aporiaches
+- Need more learning
+- Resource intensive  
+- Tight coupling
+- Depends on source (extracting)and load system resource constraints
  
 Kafka goals: 
 - high throughput
@@ -21,6 +21,8 @@ Broker is nothing but a single system; ;also known as a node
 
 Kafka + zookeeper form distributed system 
 Kafka is written in Scala
+
+Looking from a different view, Kafa is nothing but a time-series database, with applied data retenion policy
 
 Topic: 
 Named data feeds that span across cluster of brokers 
@@ -48,7 +50,8 @@ A configurable time indicating how long messages must be retained
 Default 7days
 Configured for each topic 
 
-Messages received by a topic can be checked by looking at log file in that topic folder 
+Messages received by a topic can be checked by looking at log file in that topic folder. 
+Similar to Solr, kafa has folder with .index and .log files which are used for data storage(?)
 
 Partition and replication :
 Each partition resides on only one machine 
@@ -62,30 +65,31 @@ Replication factor as with partition set at topic level
 Use describe to see metadata of a topic 
 
 
-Producer :
+Producer : (KafkaProducer)
 
 Config: (ProducerConfig)
-bootstrap.server
-Key.serializer
-Value.serializer
-
-KafkaProducer
+- bootstrap.server
+- Key.serializer
+- Value.serializer
 ProducerRecords class sends data to kafka
 Message goes as value 
-Key is optional and just provides extra info if required in future 
+Key is optional and just provides extra info if required in future as well used in allocation of data to partitions
+
 Microbatching: 
-Send small batched data to kafka (RecordBatch class)
 Kafka uses buffer to handle received message
+RecordBatch class used
 
 Consumer :
 Configuration same as producer
 KafkaConsumer class 
 Any number of topics can be subscribed by a consumer
-Subscribe vs Assign
+
+Subscribe vs Assign:
 Subscribe works at topic level, assign is more advance with functionality to subscribe for a particular partition 
 
-poll() method polls for data. It must be called in an infinite loop. 
-Poll and kafka consumption is single threaded
-Poll uses fetcher, metadata, subscriptionstate and consumer coordinator to achieve it's goal
+poll() method:
+- polls for data. It must be called in an infinite loop. 
+- Poll and kafka consumption using poll is single threaded
+- Poll uses fetcher, metadata, subscriptionstate and consumer coordinator to achieve it's goal
 
 
