@@ -92,4 +92,11 @@ poll() method:
 - Poll and kafka consumption using poll is single threaded
 - Poll uses fetcher, metadata, subscriptionstate and consumer coordinator to achieve it's goal
 
+Kafka works same as solr with data buffering when pushed to kafka and committing in batches
+You ask for committing with commitsync or commitasync methods 
+Unlike solr you get status response for commit
+
+
+To increase consumption performance multiple consumer can be used forming consumer cluster 
+This uses zookeeper and groupid (group.id property) 
 
