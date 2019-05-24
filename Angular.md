@@ -4,6 +4,19 @@ npm install -g @angular/cli (install angular command line interface or cli globa
 npm install -g @angular/cli@latest (upgrade angular cli)
 ng -v
 
+dependency mangement: npm
+build: webpack
+project descriptor: package.json (like pom.xml)
+unit test: karma/jasmine
+response layout: bootstrap or angular material
+reactive programming: RxJs
+End to end testing: Protractor
+static code check: tslint or sonar
+version control: git
+build automation: jenkins
+repo: nexus
+code quality: sonar
+
 create angular project:
 ng new projectname
 ng new projectname -d (d flag shows the project strcture without creating the project)
@@ -74,3 +87,4 @@ Module
 
 Reference:
 https://www.youtube.com/watch?v=Sm353aYNZxU&list=PL6n9fhu94yhWNJaDgh0mfae_9xoQ4E_Zj&index=1
+https://www.youtube.com/watch?v=7Ott2mwtp9c
