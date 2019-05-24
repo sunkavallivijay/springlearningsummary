@@ -38,15 +38,38 @@ Not good for complex forms
 
 Reactive forms are dynamic, flexible
 Also known as model driven forms
-Requires more code than template forms
+Requires more code than template formsring
 Angular's ReactiveFormsModule provides the funtionality
 FormGroup & FormControl
+
+To set value in forms use: setValue and patchValue methods
+setValue must be provided with values for all the form group control else will error out, this helps to make sure we didn't miss any element
+patchValue can take only the control for which one wants to set values; this might lead to problem if any control element is accidentally missed as it doesn't give any warning or error
+Using FormBuilder to create forms helps reduce boilerplate code also allowing to specify default values
+
+Form validation:
+Validator class from @angular/forms module can be used for validation
+FormGroup, FormControl, FormBuilder and Validator are all part of forms api of angular
+Validator has methods for validation, which must be specified next to default value with a comma in formbuilder
+
+To display validation failure message touched and dirty should be checked on the formcontrol
+formcontrol.valid can be checked to know if a particular element is in valid state i.e. no validation failures
+
+ValueChanges:
+To get values on change in a FormGroup Or FormControl use `ValueChanges.subscribe` method which acts as event subscriber. This is part of angular forms itself
+e.g 
+For formcontrol value change: this.formgroup.get(formcontrol).valueChanges.subscribe(value: string){do with value here}
+For any value change in entire formgroup: this.formgroup.valueChanges.subscribe(value: any){JSON.toStringify(value);}
+
+Loop tru formGroup:
+Object.keys(formgroup.controls) gives list of all controls in the formgroup
+To disable a formcontrol: just use formcontrol.disabled(). Similarly you can call many other methods like markdirty()
 
 Forms Api: 
 https://angular.io/api/forms
 Used to capture inputs entered in html form tag and do many things
 
-Component
+Component   
 Module
 
 Reference:
