@@ -1,3 +1,23 @@
+###JShell:
+REPL implementation for Java
+
+###JPMS: Java Platform Module System
+Validate module availablitiy; prevents runtime NoClassDefFound error
+Jar version conflicts addressed
+Improved security of class access; Limit which classes are accessible outside module (jar)
+
+###JLink:
+Create our own JRE; that includes only classes needed to run the program
+For e.g. helloword class with print statement might require just 2 to 3 class; we can limit JRE to only those
+
+###HTTP2 Client:
+- Easy to use
+- Multiple request can be sent in a single connection
+- Text and Binary data can be sent
+- Asynchronous requests support
+
+###Process Api:
+
 ### Private Interface Methods:
 - Only usecase:
   To share code between default methods without requiring you to add another default method to the interface’s API.
